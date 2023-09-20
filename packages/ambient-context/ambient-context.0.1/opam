@@ -1,0 +1,41 @@
+opam-version: "2.0"
+synopsis:
+  "Abstraction over thread-local storage and continuation-local storage mechanisms"
+maintainer: "ELLIOTTCABLE <opam@ell.io>"
+authors: "ELLIOTTCABLE"
+license: "MIT"
+homepage: "https://github.com/ELLIOTTCABLE/ocaml-ambient-context"
+bug-reports: "https://github.com/ELLIOTTCABLE/ocaml-ambient-context/issues"
+depends: [
+  "dune" {>= "3.6"}
+  "ocaml" {>= "4.08"}
+  "alcotest" {with-test}
+  "bisect_ppx" {with-test}
+  "ocaml-lsp-server" {with-dev-setup}
+  "ocamlformat" {with-dev-setup & >= "0.24" & < "0.25"}
+  "odoc" {with-doc}
+]
+depopts: ["hmap"]
+build: [
+  ["dune" "subst"] {dev}
+  [
+    "dune"
+    "build"
+    "-p"
+    name
+    "-j"
+    jobs
+    "@install"
+    "@runtest" {with-test}
+    "@doc" {with-doc}
+  ]
+]
+dev-repo: "git+https://github.com/ELLIOTTCABLE/ocaml-ambient-context.git"
+url {
+  src:
+    "https://github.com/ELLIOTTCABLE/ocaml-ambient-context/archive/refs/tags/v0.1.tar.gz"
+  checksum: [
+    "md5=ffbea9eabf8dc803a1dfb0f9b25f768a"
+    "sha512=861972c7db380ed98a59652dfa83da49819fbf0f85868e6fe8536bbe807693eec545a22fa2465cb9f8ee68fce1e68f7b8074044b4bbbda2428944a1cece65e85"
+  ]
+}
